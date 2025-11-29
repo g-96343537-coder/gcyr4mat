@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>四年级数学选择题测验</title>
+<!-- MathJax 用于公式渲染 -->
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <style>
 body {
-  font-family: "ZCOOL KuaiLe', 'Microsoft YaHei', sans-serif;
+  font-family: "ZCOOL KuaiLe", "Microsoft YaHei", sans-serif;
   font-size: 18px; 
   background: url('https://wallpapercave.com/wp/wp14191696.jpg') no-repeat center center fixed;
   background-size: cover;
@@ -37,7 +39,7 @@ h1 {
   backdrop-filter: blur(6px);
   max-width: 900px;
   margin: auto;
-  opacity: 80;
+  opacity: 0.8;
   animation: fadeIn 0.8s forwards, floatUpDown 3s ease-in-out infinite alternate;
 }
 
@@ -127,37 +129,37 @@ h1 {
 </div>
 
 <script>
-// ====== 题库 ======
+// ====== 题库（已把复杂数学转换为 LaTeX，行内模式 \(...\)） ======
 const rawData = `
-1,48 235 中，数字 8 的数位是： A. 个位 B. 十位 C. 百位 D. 千位,C
-2,把 63 942 写成万位近似值。 A. 60 000 B. 63 000 C. 64 000 D. 70 000,C
+1,48 235 中，数字 8 的数位是： A. 个位 B. 十位 C. 百位 D. 千位,D
+2,把 63 942 写成万位近似值。 A. 60 000 B. 63 000 C. 64 000 D. 70 000,A
 3,下列哪一组数目都是奇数？ A. 11, 23, 45 B. 12, 14, 16 C. 10, 21, 33 D. 11, 22, 33,A
-4,13 450 + 2 100 - 500 = A. 14 050 B. 15 050 C. 15 550 D. 16 050,C
-5,425 × 12 = A. 4 100 B. 5 000 C. 5 100 D. 5 200,C
-6,5 600 ÷ 100 = A. 5.6 B. 56 C. 560 D. 5600,C
-7,把 2\\frac{3}{5} 化为假分数。 A. 6/5 B. 11/5 C. 13/5 D. 23/5,C
-8,2/3 + 1/9 = A. 3/12 B. 3/9 C. 7/9 D. 8/9,C
-9,在 14.257 中，数字 5 的数值是： A. 5 B. 0.5 C. 0.05 D. 0.005,C
-10,8.4 - 2.15 = A. 6.25 B. 6.35 C. 10.55 D. 10.65,A
-11,3/4 等于多少百分比？ A. 25% B. 50% C. 75% D. 100%,C
-12,RM 24 500 + RM 3 250 = A. RM 27 500 B. RM 27 750 C. RM 28 000 D. RM 57 000,C
-13,RM 532.80 ÷ 4 = A. RM 133.00 B. RM 133.20 C. RM 134.20 D. RM 143.20,B
+4,\\(13 450 + 2 100 - 500\\) = A. 14 050 B. 15 050 C. 15 550 D. 16 050,B
+5,\\(425 \\times 12\\) = A. 4 100 B. 5 000 C. 5 100 D. 5 200,C
+6,\\(5 600 \\div 100\\) = A. 5.6 B. 56 C. 560 D. 5600,B
+7,把 \\(2\\frac{3}{5}\\) 化为假分数。 A. \\(\\frac{6}{5}\\) B. \\(\\frac{11}{5}\\) C. \\(\\frac{13}{5}\\) D. \\(\\frac{23}{5}\\),C
+8,\\(\\frac{2}{3} + \\frac{1}{9}\\) = A. \\(\\frac{3}{12}\\) B. \\(\\frac{3}{9}\\) C. \\(\\frac{7}{9}\\) D. \\(\\frac{8}{9}\\),C
+9,在 \\(14.257\\) 中，数字 5 的数值是： A. 5 B. 0.5 C. 0.05 D. 0.005,C
+10,\\(8.4 - 2.15\\) = A. 6.25 B. 6.35 C. 10.55 D. 10.65,A
+11,\\(\\frac{3}{4}\\) 等于多少百分比？ A. 25% B. 50% C. 75% D. 100%,C
+12,RM 24 500 + RM 3 250 = A. RM 27 500 B. RM 27 750 C. RM 28 000 D. RM 57 000,B
+13,RM \\(532.80 \\div 4\\) = A. RM 133.00 B. RM 133.20 C. RM 134.20 D. RM 143.20,B
 14,把 3:45 p.m. 写成 24 时计时法。 A. 0345 时 B. 1345 时 C. 1545 时 D. 1645 时,C
-15,4 个年代 6 年 + 2 个年代 9 年 = A. 6 个年代 5 年 B. 7 个年代 5 年 C. 7 个年代 15 年 D. 75 年,C
+15,4 个年代 6 年 + 2 个年代 9 年 = A. 6 个年代 5 年 B. 7 个年代 5 年 C. 7 个年代 15 年 D. 75 年,B
 16,2 天 10 小时等于多少小时？ A. 34 小时 B. 48 小时 C. 58 小时 D. 60 小时,C
-17,3 km 50 m 等于多少 m？ A. 350 m B. 3050 m C. 3500 m D. 30050 m,C
-18,8 kg 400 g × 2 = A. 16 kg 400 g B. 16 kg 800 g C. 17 kg 200 g D. 18 kg 000 g,B
-19,5 升 250 毫升 - 1 升 800 毫升 = A. 3 升 450 毫升 B. 3 升 850 毫升 C. 4 升 450 毫升 D. 4 升 850 毫升,A
+17,3 km 50 m 等于多少 m？ A. 350 m B. 3050 m C. 3500 m D. 30050 m,B
+18,\\(8\\ \\text{kg }400\\ \\text{g} \\times 2\\) = A. 16 kg 400 g B. 16 kg 800 g C. 17 kg 200 g D. 18 kg 000 g,B
+19,\\(5\\ \\text{L }250\\ \\text{mL} - 1\\ \\text{L }800\\ \\text{mL}\\) = A. 3 升 450 毫升 B. 3 升 850 毫升 C. 4 升 450 毫升 D. 4 升 850 毫升,A
 20,下列哪个角是锐角 (Acute Angle)？ A. 90 度 B. 100 度 C. 45 度 D. 180 度,C
 21,两条直线永远不会相交，这两条直线被称为： A. 平行线 B. 垂直线 C. 交叉线 D. 曲线,A
 22,一个正方形的边长是 8 cm，计算它的周长。 A. 16 cm B. 24 cm C. 32 cm D. 64 cm,C
-23,一个长方形的长是 10 cm，宽是 6 cm。计算它的面积。 A. 32 cm^2 B. 60 cm^2 C. 100 cm^2 D. 120 cm^2,B
-24,一个正方体 (Cube) 的体积是 64 cm^3。请问它的边长是多少？ A. 2 cm B. 3 cm C. 4 cm D. 8 cm,C
-25,坐标平面上，x 轴是： A. 垂直的轴 (Vertical) B. 水平的轴 (Horizontal) C. 斜线 D. 原点坐标 (5, 2) 表示：B
+23,一个长方形的长是 10 cm，宽是 6 cm。计算它的面积。 A. \\(32\\ \\text{cm}^2\\) B. \\(60\\ \\text{cm}^2\\) C. \\(100\\ \\text{cm}^2\\) D. \\(120\\ \\text{cm}^2\\),B
+24,一个正方体 (Cube) 的体积是 \\(64\\ \\text{cm}^3\\)。请问它的边长是多少？ A. 2 cm B. 3 cm C. 4 cm D. 8 cm,C
+25,坐标平面上，x 轴是： A. 垂直的轴 (Vertical) B. 水平的轴 (Horizontal) C. 斜线 D. 原点坐标 (5, 2),B
 26,原点坐标 (5, 2) 表示： A. 向右 5 个单位，向上 2 个单位 B. 向右 2 个单位，向上 5 个单位 C. 向上 5 个单位，向右 2 个单位 D. 向上 2 个单位，向左 5 个单位,A
 27,老师买了 10 支红笔和 2 支蓝笔。红笔数量和蓝笔数量的比是多少？ A. 2:10 B. 1:5 C. 5:1 D. 10:1,C
 28,象形统计图中，一个苹果符号代表 10 个苹果。如果有半个苹果符号，代表多少个苹果？ A. 1 B. 2 C. 5 D. 10,C
-29,一盒饼干有 50 块。小明吃了 20% 的饼干。小明吃了多少块？ A. 10 B. 20 C. 30 D. 40,B
+29,一盒饼干有 50 块。小明吃了 \\(20\\%\\) 的饼干。小明吃了多少块？ A. 10 B. 20 C. 30 D. 40,A
 30,小华有 RM 50。他买了一本书 RM 15.90 和一支笔 RM 4.50。他还剩下多少钱？ A. RM 20.40 B. RM 29.60 C. RM 30.60 D. RM 39.60,B
 `;
 
@@ -189,7 +191,7 @@ function loadQuestion(){
   document.getElementById('finishBtn').style.display = 'none';
   document.getElementById('result').textContent = '';
   const q = data[current];
-  document.getElementById('question').textContent = q.q;
+  document.getElementById('question').innerHTML = q.q;
   document.getElementById('cur').textContent = current+1;
 
   const optsDiv = document.getElementById('options');
@@ -197,10 +199,12 @@ function loadQuestion(){
   q.options.forEach((opt,i)=>{
     const div = document.createElement('div');
     div.className='opt';
-    div.textContent = opt;
+    div.innerHTML = opt;
     div.addEventListener('click',()=>selectOption(div,i));
     optsDiv.appendChild(div);
   });
+
+  MathJax.typesetPromise();
 }
 
 function selectOption(el,index){
@@ -211,7 +215,7 @@ function selectOption(el,index){
   all.forEach((d,i)=>{ if(i===q.answer) d.classList.add('correct'); });
   if(index!==q.answer) el.classList.add('wrong');
   else score++;
-  document.getElementById('score').textContent='得分：'+score;
+  document.getElementById('score').textContent='得分：'+score+' / '+data.length;
 
   if(current === data.length-1){
     document.getElementById('finishBtn').style.display='inline-block';
@@ -235,7 +239,7 @@ document.getElementById('restart').addEventListener('click',()=>{
   if(confirm('确定重做测验吗？')){
     current=0;
     score=0;
-    document.getElementById('score').textContent='得分：0';
+    document.getElementById('score').textContent='得分：0 / '+data.length;
     document.getElementById('nextBtn').style.display='inline-block';
     document.getElementById('nextBtn').disabled=true;
     loadQuestion();
